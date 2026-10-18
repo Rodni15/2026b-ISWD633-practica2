@@ -58,6 +58,8 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 
 **¿Cuántos pasos se han ejecutado?**
 # RESPONDER 
+
+
 Se han ejecutado 3 pasos principales para construir la imagen Docker: utilizar la imagen base de CentOS 7, actualizar los repositorios e instalar Apache, y copiar los archivos de la página web al directorio correspondiente.
 ### Inspeccionar la imagen creada
 # COMPLETAR CON UNA CAPTURA
@@ -67,7 +69,10 @@ Se han ejecutado 3 pasos principales para construir la imagen Docker: utilizar l
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+
+
 Se ejecutaron los 3 pasos principales. A diferencia de la primera vez Docker reutilizó la capa de actualización e instalación por lo que el proceso fue más rápido. Como se modificó el archivo index.html Docker volvió a ejecutar el paso COPY para incorporar los cambios en la nueva versión de la imagen.
+
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
 
@@ -83,9 +88,13 @@ docker run -d --name server-apache -P mi-apache:1.1
 
 ### ¿Con que puerto host se está realizando el mapeo?
 # COMPLETAR CON LA RESPUESTA
+
 Se esta utilizando el puerto 32768
+
+
 **¿Qué es una imagen huérfana?**
 # COMPLETAR CON LA RESPUESTA
+
 Una imagen huérfana es una imagen de Docker que no tiene una etiqueta asociada y normalmente aparece con el nombre y la etiqueta <none>. Puede generarse cuando se construye una nueva versión de una imagen y la versión anterior deja de estar etiquetada. 
 ### Identificar imágenes huérfanas
 ```
