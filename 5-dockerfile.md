@@ -58,13 +58,16 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 
 **¿Cuántos pasos se han ejecutado?**
 # RESPONDER 
-
+Se han ejecutado 3 pasos principales para construir la imagen Docker: utilizar la imagen base de CentOS 7, actualizar los repositorios e instalar Apache, y copiar los archivos de la página web al directorio correspondiente.
 ### Inspeccionar la imagen creada
 # COMPLETAR CON UNA CAPTURA
+<img width="1240" height="937" alt="imagen" src="https://github.com/user-attachments/assets/6d39f8ab-ecdd-4eb1-bf46-b344440e6867" />
+<img width="1187" height="612" alt="imagen" src="https://github.com/user-attachments/assets/17a328c1-06e3-4609-aeaa-d587800f0c35" />
+
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
-
+Se ejecutaron los 3 pasos principales. A diferencia de la primera vez Docker reutilizó la capa de actualización e instalación por lo que el proceso fue más rápido. Como se modificó el archivo index.html Docker volvió a ejecutar el paso COPY para incorporar los cambios en la nueva versión de la imagen.
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
 
@@ -75,15 +78,15 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 
 ### Crear un contenedor a partir de las imagen creada, mapear todos los puertos
 ```
-
+docker run -d --name server-apache -P mi-apache:1.1
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
 # COMPLETAR CON LA RESPUESTA
-
+Se esta utilizando el puerto 32768
 **¿Qué es una imagen huérfana?**
 # COMPLETAR CON LA RESPUESTA
-
+Una imagen huérfana es una imagen de Docker que no tiene una etiqueta asociada y normalmente aparece con el nombre y la etiqueta <none>. Puede generarse cuando se construye una nueva versión de una imagen y la versión anterior deja de estar etiquetada. 
 ### Identificar imágenes huérfanas
 ```
 docker images -f "dangling=true"
@@ -99,6 +102,7 @@ Este comando eliminará todas las imágenes que no estén asociadas a ningún co
 ```
 docker image prune
 ```
+<img width="1455" height="247" alt="imagen" src="https://github.com/user-attachments/assets/4085e7c5-05f1-4f3d-9204-5c3efa0baab7" />
 
 ### Para Ejecutar un archivo Dockerfile que tiene otro nombre
 ```
@@ -108,5 +112,6 @@ docker build -t <nombre imagen>:<tag> -f <ruta y nombre del Dockerfile> .
 ## Por ejemplo
 docker build -t imagen:1.0 -f Dockerfile-custom .
 
+<img width="1452" height="507" alt="imagen" src="https://github.com/user-attachments/assets/819ca223-0e8f-40ea-bf1f-edf310b83d39" />
 
 
