@@ -11,7 +11,7 @@ Asignar núcleos de CPU específicos:
 
 **¿Como saber el numero de procesadores virtuales que tiene una máquina?**
 ## COMPLETAR
-
+Con el comando docker info en la linea CPUs indica la cantidad de CPU que docker tiene disponible, o con el comando (Get-CimInstance Win32_ComputerSystem).NumberOfLogicalProcessors desde el PowerShell de Windows
 ## Ejemplos
 _Puedes copiar y ejecutar directamente cada uno de los comandos_
 
